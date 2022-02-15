@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
+
+body {
+  font-family: "Asap", sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+
+.navbar {
+  display: flex;
+  padding: 0 35px;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.navbar .navbar-logo {
+  height: 30px;
+}
+
+.navbar .navbar-menu {
+  display: flex;
+  height: 100%;
+}
+
+.navbar .navbar-menu a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #2f76b5;
+  padding: 0 20px;
+  transition: all 0.2s;
+}
+
+.navbar .navbar-menu a:hover {
+  background-color: rgb(228, 228, 228);
+}
+
+.navbar .navbar-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.container {
+  padding: 35px 35px;
+}
+
+.row {
+  display: flex;
+  column-gap: 30px;
+}
+
+.date-category {
+  width: 20%;
+}
+
+.date-category .category {
+  font-size: 1.6em;
+  margin: 1.8em 0;
+}
+
+.statistic {
+  width: 60%;
+}
+
+.statistic h1 {
+  margin-bottom: 20px;
+}
+
+.statistic .date-pick-group {
+  display: flex;
+  column-gap: 10px;
+  overflow: auto;
+  margin-bottom: 20px;
+}
+
+.statistic .date-pick-group::-webkit-scrollbar {
+  display: none;
+}
+
+.statistic .date-pick {
+  flex-grow: 1;
+  min-width: 60px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #2f76b5;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.statistic .graph-statistic img {
+  width: 100%;
+}
+
+.daily-task {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.daily-task .daily-task-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.daily-task .daily-task-group .task {
+  display: flex;
+  column-gap: 10px;
+  padding: 10px;
+  align-items: center;
+}
+
+.daily-task .daily-task-group .task .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.daily-task .daily-task-group .task .content p {
+  margin: 0;
+}
+
+.daily-task .btn {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  text-transform: uppercase;
+  background-color: #2f76b5;
+  color: white;
+  border-radius: 6px;
+}
