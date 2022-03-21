@@ -1,8 +1,12 @@
 @use "../base/varibles";
+@use "../base/mixins";
 
-.button {
+button {
+  @include mixins.transition;
+
   font-family: varibles.$font-family-primary;
   background: none;
   border: none;
   cursor: pointer;
+  width: 100%;
 }

@@ -33,7 +33,7 @@ const DailyTasks = () => {
           </div>
         ))}
       </div>
-      <button className="button create-task-button">Create More Task</button>
+      <button className="create-task-button">Create More Task</button>
     </div>
   );
 };

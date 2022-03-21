@@ -1,9 +1,11 @@
-// 1. Background (0dp elevation surface overlay)
+// 1. Background
 $color-background: #121212;
-// 2. Surface (with 1dp elevation surface overlay)
+// 2. Surface
 $color-surface: #1e1e1e;
+$color-surface-hover: #181818;
 // 3. Primary
 $color-primary: #bb86fc;
+$color-primary-hover: #9641ff;
 // 4. Secondary
 $color-secondary: #03dac6;
 // 5. On background
@@ -22,15 +24,30 @@ body.dark-theme {
   .navbar {
     background: $color-surface;
     color: $color-on-surface;
+
+    li {
+      &:hover {
+        background: $color-surface-hover;
+      }
+    }
   }
 
   .daily-tasks {
     background: $color-surface;
     color: $color-on-surface;
 
+    .daily-task {
+      &:hover {
+        background: $color-surface-hover;
+      }
+    }
+
     .create-task-button {
       background: $color-primary;
       color: $color-on-primary;
+      &:hover {
+        background: $color-primary-hover;
+      }
     }
   }
 }

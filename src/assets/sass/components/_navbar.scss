@@ -1,4 +1,5 @@
 @use "../base/varibles";
+@use "../base/mixins";
 
 .navbar {
   font-family: varibles.$font-family-primary;
@@ -18,9 +19,11 @@
       display: flex;
 
       li {
+        @include mixins.transition;
         padding: 20px 40px;
         display: flex;
         align-items: center;
+        cursor: pointer;
       }
     }
 
