@@ -1,0 +1,8 @@
+@use "../base/varibles";
+
+.button {
+  font-family: varibles.$font-family-primary;
+  background: none;
+  border: none;
+  cursor: pointer;
+}

@@ -1,12 +1,18 @@
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <div>Logo</div>
-      <ul>
-        <li>Home</li>
-        <li>Tasks</li>
-      </ul>
-      <div>User</div>
+      <div className="navbar-content">
+        <div className="navbar-logo">Logo</div>
+        <ul className="navbar-menu">
+          <li>Home</li>
+          <li>Tasks</li>
+        </ul>
+        <img
+          src="https://i.imgur.com/jydEUGE.jpg"
+          className="navbar-user-profile"
+          alt="User Profile"
+        />
+      </div>
     </nav>
   );
 };

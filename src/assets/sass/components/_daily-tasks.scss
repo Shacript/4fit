@@ -1,0 +1,47 @@
+@use "../base/varibles";
+
+.daily-tasks {
+  font-family: varibles.$font-family-primary;
+
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5em;
+
+  h2 {
+    font-size: varibles.$font-size-h2;
+  }
+
+  .daily-tasks-group {
+    display: flex;
+    column-gap: 10px;
+    padding: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .daily-task {
+      display: flex;
+      column-gap: 10px;
+      padding: 10px;
+      align-items: center;
+      width: 100%;
+
+      .daily-task-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .daily-task-content {
+        p {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+
+  .create-task-button {
+    padding: 10px;
+  }
+}

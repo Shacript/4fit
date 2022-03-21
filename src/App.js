@@ -1,9 +1,18 @@
-import Navbar from "./components/navbar/Navbar";
+// React Modules
+import { useEffect } from "react";
 
+// Route Logic
 import { Routes, Route } from "react-router-dom";
 import routes from "./app/route";
 
+// Components
+import Navbar from "./components/Navbar/Navbar";
+
 function App() {
+  useEffect(() => {
+    document.body.classList.add("dark-theme");
+  }, []);
+
   return (
     <div className="App">
       <header>

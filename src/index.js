@@ -6,6 +6,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
+// Import SCSS main file .
+import "./assets/sass/_main.scss";
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

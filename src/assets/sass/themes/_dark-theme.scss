@@ -1,0 +1,36 @@
+// 1. Background (0dp elevation surface overlay)
+$color-background: #121212;
+// 2. Surface (with 1dp elevation surface overlay)
+$color-surface: #1e1e1e;
+// 3. Primary
+$color-primary: #bb86fc;
+// 4. Secondary
+$color-secondary: #03dac6;
+// 5. On background
+$color-on-background: #cfcfcf;
+// 6. On Surface
+$color-on-surface: #e1e1e1;
+// 7. On Primary
+$color-on-primary: #100c16;
+// 8. On Secondary
+$color-on-secondary: #000a0a;
+
+body.dark-theme {
+  background: $color-background;
+  color: $color-on-background;
+
+  .navbar {
+    background: $color-surface;
+    color: $color-on-surface;
+  }
+
+  .daily-tasks {
+    background: $color-surface;
+    color: $color-on-surface;
+
+    .create-task-button {
+      background: $color-primary;
+      color: $color-on-primary;
+    }
+  }
+}
