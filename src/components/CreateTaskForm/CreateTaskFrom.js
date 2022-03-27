@@ -15,9 +15,9 @@ const CreateTaskFrom = () => {
         <input type="text" />
         <label>Activity Type</label>
         <select>
-          <option value="">Running</option>
-          <option value="">Swimming</option>
-          <option value="">Cycling</option>
+          <option value="Running">Running</option>
+          <option value="Swimming">Swimming</option>
+          <option value="Cycling">Cycling</option>
         </select>
         <label>Duration</label>
         <input type="time" />

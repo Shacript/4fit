@@ -1,29 +1,9 @@
-import { BiRun } from "react-icons/bi";
-
-const DailyTasks = () => {
-  const fakeTasks = [
-    {
-      name: "Test1",
-      icon: <BiRun className="daily-task-icon" />,
-      time: 10,
-    },
-    {
-      name: "Test2",
-      icon: <BiRun className="daily-task-icon" />,
-      time: 20,
-    },
-    {
-      name: "Test3",
-      icon: <BiRun className="daily-task-icon" />,
-      time: 30,
-    },
-  ];
-
+const DailyTasks = ({ tasks = [] }) => {
   return (
     <div className="daily-tasks">
       <h2>Daily Tasks</h2>
       <div className="daily-tasks-group">
-        {fakeTasks.map((task, index) => (
+        {Array.isArray(tasks) && tasks.map((task, index) => (
           <div className="daily-task" key={index}>
             {task.icon}
             <div className="daily-task-content">

@@ -12,6 +12,7 @@ $color-secondary: #03dac6;
 $color-on-background: #cfcfcf;
 // 6. On Surface
 $color-on-surface: #e1e1e1;
+$color-on-surface-background: #3f3f3f7c;
 // 7. On Primary
 $color-on-primary: #100c16;
 // 8. On Secondary
@@ -43,6 +44,26 @@ body.dark-theme {
     }
 
     .create-task-button {
+      background: $color-primary;
+      color: $color-on-primary;
+      &:hover {
+        background: $color-primary-hover;
+      }
+    }
+  }
+
+  .CreateTaskFrom {
+    background: $color-surface;
+    color: $color-on-surface;
+
+    form {
+      input,select {
+        background: $color-on-surface-background;
+        color: $color-on-surface;
+      }
+    }
+
+    button {
       background: $color-primary;
       color: $color-on-primary;
       &:hover {
