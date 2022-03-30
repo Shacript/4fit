@@ -14,8 +14,16 @@ function App() {
     <div className="App">
       <main>
         <Routes>
-          {routes.map(({ path, component }, route_key) => (
-            <Route path={path} element={component} key={route_key} />
+          {routes.map(({ path, component, childComponents }, route_key) => (
+            <Route path={path} element={component} key={route_key}>
+              {childComponents.map((child, childRoute_key) => (
+                <Route
+                  path={child.path}
+                  element={child.component}
+                  key={childRoute_key}
+                />
+              ))}
+            </Route>
           ))}
         </Routes>
       </main>
