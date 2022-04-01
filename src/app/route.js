@@ -10,6 +10,10 @@ const RegisterForm = React.lazy(() =>
   import("../components/Authentication/RegisterForm/RegisterForm")
 );
 
+const LayoutUserPage = React.lazy(() =>
+  import("../pages/UserPage/LayoutUserPage")
+);
+
 const routes = [
   {
     path: "/",
@@ -22,6 +26,16 @@ const routes = [
       {
         path: "/register",
         element: <RegisterForm />,
+      },
+    ],
+  },
+  {
+    path: "/",
+    element: <LayoutUserPage />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <h1>Still Belive</h1>,
       },
     ],
   },

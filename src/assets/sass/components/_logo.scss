@@ -1,6 +1,7 @@
 @use "../base/varibles";
 
 .Logo {
+  display:inline-block;
   text-align: center;
   font-family: varibles.$font-family-primary;
   h2 {
