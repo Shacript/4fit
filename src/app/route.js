@@ -13,6 +13,9 @@ const RegisterForm = React.lazy(() =>
 const LayoutUserPage = React.lazy(() =>
   import("../pages/UserPage/LayoutUserPage")
 );
+const DashboardPage = React.lazy(() =>
+  import("../pages/UserPage/DashboardPage")
+);
 
 const routes = [
   {
@@ -35,7 +38,7 @@ const routes = [
     children: [
       {
         path: "/dashboard",
-        element: <h1>Still Belive</h1>,
+        element: <DashboardPage />,
       },
     ],
   },
