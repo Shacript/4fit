@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 
 // Route Logic
-import { Routes, Route } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import routes from "./app/route";
 
 function App() {
@@ -10,23 +10,11 @@ function App() {
     document.body.classList.add("dark-theme");
   }, []);
 
+  const element = useRoutes(routes);
+
   return (
     <div className="App">
-      <main>
-        <Routes>
-          {routes.map(({ path, component, childComponents }, route_key) => (
-            <Route path={path} element={component} key={route_key}>
-              {childComponents.map((child, childRoute_key) => (
-                <Route
-                  path={child.path}
-                  element={child.component}
-                  key={childRoute_key}
-                />
-              ))}
-            </Route>
-          ))}
-        </Routes>
-      </main>
+      <main>{element}</main>
     </div>
   );
 }

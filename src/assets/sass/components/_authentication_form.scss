@@ -1,0 +1,19 @@
+@use "../base/varibles";
+
+.AuthenticationForm {
+  font-family: varibles.$font-family-primary;
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+
+  h5 {
+    font-size: varibles.$font-size-h5;
+  }
+
+  p {
+    font-size: varibles.$font-size-h6;
+    align-self: center;
+    opacity: 0.5;
+  }
+}

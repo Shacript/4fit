@@ -1,13 +1,14 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
+import Logo from "../../components/Logo/Logo";
 
 const AuthenticationPage = () => {
   return (
     <div className="AuthenticationPage">
-      <div className="Logo">
-        <h2>4FIT</h2>
-        <h6>Exercise Tracker</h6>
-      </div>
-      <Outlet />
+      <Logo />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

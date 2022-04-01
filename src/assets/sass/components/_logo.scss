@@ -1,0 +1,17 @@
+@use "../base/varibles";
+
+.Logo {
+  text-align: center;
+  font-family: varibles.$font-family-primary;
+  h2 {
+    font-size: varibles.$font-size-h2;
+    color: #03dac6;
+    .primary-color {
+      color: #bb86fc;
+    }
+  }
+  h6 {
+    font-size: varibles.$font-size-h6;
+    opacity: 0.45;
+  }
+}

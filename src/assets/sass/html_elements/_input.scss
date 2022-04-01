@@ -1,0 +1,20 @@
+@use "../base/varibles";
+
+input {
+  font-family: varibles.$font-family-primary;
+  padding: 0.5em 1em;
+  border: none;
+  width: 20em;
+
+  color: #e1e1e1;
+  background: #1e1e1e;
+
+  &::placeholder {
+    color: #cfcfcf;
+    opacity: 0.36;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

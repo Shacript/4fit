@@ -13,15 +13,15 @@ const RegisterForm = React.lazy(() =>
 const routes = [
   {
     path: "/",
-    component: <AuthenticationPage />,
-    childComponents: [
+    element: <AuthenticationPage />,
+    children: [
       {
-        path: "/",
-        component: <LoginForm />,
+        index: true,
+        element: <LoginForm />,
       },
       {
-        path: "register",
-        component: <RegisterForm />,
+        path: "/register",
+        element: <RegisterForm />,
       },
     ],
   },
