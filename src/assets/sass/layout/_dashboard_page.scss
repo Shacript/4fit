@@ -1,0 +1,33 @@
+@use "../base/varibles";
+
+.DashboardPage {
+  width: 100%;
+  font-family: varibles.$font-family-primary;
+
+  h3 {
+    font-size: varibles.$font-size-h3;
+  }
+  h4 {
+    margin: 1em 0;
+    font-size: varibles.$font-size-h4;
+  }
+
+  padding-top: 30px;
+  padding-left: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    align-items: center;
+    column-gap: 1em;
+
+    .user-display {
+      margin: 0 40px 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
