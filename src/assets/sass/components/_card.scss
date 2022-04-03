@@ -1,0 +1,25 @@
+@use "../base/varibles";
+
+.Card {
+  display: flex;
+  align-items: center;
+
+  padding: 1.5em 1.2em;
+  width: 300px;
+
+  border-radius: 1em;
+
+  background: #1e1e1e;
+
+  .card-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .card-content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4em;
+  }
+}

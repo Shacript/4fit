@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import CardGroup from "../../components/CardGroup/CardGroup";
 const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
 
 const renderLineChart = (
@@ -27,13 +28,13 @@ const renderLineChart = (
 );
 
 const icons = {
-  add: <MdAdd />,
-  run: <FaRunning />,
-  bicycleRide: <FaBicycle />,
-  swim: <FaSwimmer />,
-  walk: <FaWalking />,
-  hike: <FaHiking />,
-  other: <FaQuestion />,
+  add: <MdAdd className="card-icon" />,
+  run: <FaRunning className="card-icon" />,
+  bicycleRide: <FaBicycle className="card-icon" />,
+  swim: <FaSwimmer className="card-icon" />,
+  walk: <FaWalking className="card-icon" />,
+  hike: <FaHiking className="card-icon" />,
+  other: <FaQuestion className="card-icon" />,
 };
 
 const DashboardPage = () => {
@@ -41,17 +42,17 @@ const DashboardPage = () => {
     {
       topText: "55 kg.",
       bottomText: "Weight",
-      icon: <GiWeight />,
+      icon: <GiWeight className="card-icon" />,
     },
     {
       topText: "167 cm.",
       bottomText: "Height",
-      icon: <GiBodyHeight />,
+      icon: <GiBodyHeight className="card-icon" />,
     },
     {
       topText: "Good !",
       bottomText: "BMI 55",
-      icon: <GiHealthNormal />,
+      icon: <GiHealthNormal className="card-icon" />,
     },
   ];
 
@@ -98,30 +99,22 @@ const DashboardPage = () => {
     <div className="DashboardPage">
       <div className="header">
         <h3>Dashboard</h3>
-        <p>{currentDate}</p>
+        <p className="header-date">{currentDate}</p>
         <div className="user-display">
           <div className="user-infomation">
-            <p>Name</p>
-            <p>Current Rank</p>
+            <p>Aphisit Likitwattanapaisarn</p>
+            <p>Beginner</p>
           </div>
-          <img src="#" alt="" />
+          <img src="./assets/images/profile.jpg" alt="profile" />
         </div>
       </div>
       <div className="Infomation">
         <h4>Infomation</h4>
-        {userHealthInfomation.map((v, i) => (
-          <div key={i}>
-            {v.icon} {v.topText} {v.bottomText}
-          </div>
-        ))}
+        <CardGroup data={userHealthInfomation} />
       </div>
       <div className="Infomation">
         <h4>Daily Tasks</h4>
-        {userDailyTasks.map((v, i) => (
-          <div key={i}>
-            {v.icon} {v.topText} {v.bottomText}
-          </div>
-        ))}
+        <CardGroup data={userDailyTasks} />
       </div>
       <div className="Chart">
         <h4>Record Chart</h4>
