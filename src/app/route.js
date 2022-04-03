@@ -40,6 +40,22 @@ const routes = [
         path: "/dashboard",
         element: <DashboardPage />,
       },
+      {
+        path: "/tasks",
+        element: <h1>Test Page</h1>,
+      },
+      {
+        path: "/create_task",
+        element: <h1>Test Page</h1>,
+      },
+      {
+        path: "/records",
+        element: <h1>Test Page</h1>,
+      },
+      {
+        path: "/settings",
+        element: <h1>Test Page</h1>,
+      }
     ],
   },
 ];

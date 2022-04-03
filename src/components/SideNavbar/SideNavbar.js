@@ -4,45 +4,71 @@ import {
   MdDashboard,
   MdListAlt,
   MdAdd,
-  MdPublic,
   MdHistory,
   MdSettings,
   MdLogout,
 } from "react-icons/md";
 
+import { useNavigate } from "react-router-dom";
+
 const SideNavbar = () => {
+  const navigate = useNavigate();
+
+  const menu = [
+    {
+      icon: <MdDashboard className="icon" />,
+      label: "Dashboard",
+      onClick: () => {
+        navigate("dashboard");
+      },
+    },
+    {
+      icon: <MdListAlt className="icon" />,
+      label: "Tasks",
+      onClick: () => {
+        navigate("tasks");
+      },
+    },
+    {
+      icon: <MdAdd className="icon" />,
+      label: "Create Task",
+      onClick: () => {
+        navigate("create_task");
+      },
+    },
+    {
+      icon: <MdHistory className="icon" />,
+      label: "Records",
+      onClick: () => {
+        navigate("records");
+      },
+    },
+    {
+      icon: <MdSettings className="icon" />,
+      label: "Settings",
+      onClick: () => {
+        navigate("settings");
+      },
+    },
+    {
+      icon: <MdLogout className="icon" />,
+      label: "Sign out",
+      onClick: () => {
+        // navigate("logout");
+      },
+    },
+  ];
+
   return (
     <div className="SideNavbar">
       <Logo />
       <ul>
-        <li>
-          <MdDashboard className="icon" />
-          Dashboard
-        </li>
-        <li>
-          <MdListAlt className="icon" />
-          Tasks
-        </li>
-        <li>
-          <MdAdd className="icon" />
-          Create Task
-        </li>
-        <li>
-          <MdPublic className="icon" />
-          Feed
-        </li>
-        <li>
-          <MdHistory className="icon" />
-          Records
-        </li>
-        <li>
-          <MdSettings className="icon" />
-          Settings
-        </li>
-        <li>
-          <MdLogout className="icon" />
-          Sign out
-        </li>
+        {menu.map(({ icon, label, onClick }, i) => (
+          <li onClick={onClick} key={i}>
+            {icon}
+            {label}
+          </li>
+        ))}
       </ul>
     </div>
   );
