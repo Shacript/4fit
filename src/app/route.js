@@ -16,6 +16,13 @@ const LayoutUserPage = React.lazy(() =>
 const DashboardPage = React.lazy(() =>
   import("../pages/UserPage/DashboardPage")
 );
+const TasksPage = React.lazy(() => import("../pages/UserPage/TasksPage"));
+const ViewTaskPage = React.lazy(() => import("../pages/UserPage/ViewTaskPage"));
+const CreateTaskPage = React.lazy(() =>
+  import("../pages/UserPage/CreateTaskPage")
+);
+const RecordsPage = React.lazy(() => import("../pages/UserPage/RecordsPage"));
+const SettingsPage = React.lazy(() => import("../pages/UserPage/SettingsPage"));
 
 const routes = [
   {
@@ -42,20 +49,24 @@ const routes = [
       },
       {
         path: "/tasks",
-        element: <h1>Test Page</h1>,
+        element: <TasksPage />,
+      },
+      {
+        path: "/tasks/:id",
+        element: <ViewTaskPage />,
       },
       {
         path: "/create_task",
-        element: <h1>Test Page</h1>,
+        element: <CreateTaskPage />,
       },
       {
         path: "/records",
-        element: <h1>Test Page</h1>,
+        element: <RecordsPage />,
       },
       {
         path: "/settings",
-        element: <h1>Test Page</h1>,
-      }
+        element: <SettingsPage />,
+      },
     ],
   },
 ];
