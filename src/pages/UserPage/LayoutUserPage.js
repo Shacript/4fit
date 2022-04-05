@@ -6,9 +6,11 @@ const LayoutUserPage = () => {
   return (
     <div className="LayoutUserPage">
       <SideNavbar />
-      <Suspense>
-        <Outlet />
-      </Suspense>
+      <div className="LayoutOutlet">
+        <Suspense fallback={<h1>Loading . . .</h1>}>
+          <Outlet />
+        </Suspense>
+      </div>
     </div>
   );
 };

@@ -1,4 +1,36 @@
+@use "../base/varibles";
+
 .LayoutUserPage {
   display: flex;
   height: 100%;
+
+  .LayoutOutlet {
+    width: 100%;
+    font-family: varibles.$font-family-primary;
+
+    overflow: auto;
+
+    h3 {
+      font-size: varibles.$font-size-h3;
+    }
+
+    h4 {
+      font-size: varibles.$font-size-h4;
+    }
+
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+
+    .header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      column-gap: 1em;
+
+      .header-date {
+        opacity: 0.7;
+      }
+    }
+  }
 }

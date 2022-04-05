@@ -7,4 +7,9 @@ button {
   background: #1e1e1e;
   color: #cfcfcf;
   padding: 0.5em 1em;
+
+  &:disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
 }

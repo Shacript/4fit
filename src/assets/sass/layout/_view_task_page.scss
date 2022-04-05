@@ -1,0 +1,118 @@
+@use "../base/varibles";
+
+.ViewTaskPage {
+  display: flex;
+  flex-wrap: wrap;
+
+  .container {
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+
+    column-gap: 3em;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+
+      row-gap: 1em;
+
+      .info-box {
+        background: #1e1e1e;
+
+        display: flex;
+        align-items: center;
+        column-gap: 1em;
+
+        width: 325px;
+        height: 95px;
+
+        padding: 0 1.5em;
+
+        .icon {
+          width: 30px;
+          height: 30px;
+        }
+
+        .info-content {
+          display: flex;
+          flex-direction: column;
+          row-gap: 0.4em;
+          font-size: varibles.$font-size-h5;
+        }
+
+        .edit-button {
+          margin-left: auto;
+        }
+      }
+
+      .description {
+        h4 {
+          margin-bottom: 0.5em;
+        }
+        p {
+          font-size: varibles.$font-size-h6;
+        }
+      }
+
+      .task-control {
+        display: flex;
+        flex-wrap: wrap;
+
+        row-gap: 1em;
+        column-gap: 1em;
+
+        button {
+          font-size: varibles.$font-size-h4;
+        }
+
+        .startAndPause-btn {
+          width: 100%;
+        }
+
+        .backward,
+        .forward {
+          flex: 1;
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+
+      .activity-list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+
+        .activity {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          background: #1e1e1e;
+
+          width: 675px;
+          height: 95px;
+          padding: 0 1.5em;
+
+          transform: scale(0.95);
+          opacity: 0.45;
+
+          .activity-name {
+            font-size: varibles.$font-size-h5;
+          }
+
+          .time-count {
+            font-size: varibles.$font-size-h2;
+          }
+        }
+
+        .active {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

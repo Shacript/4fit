@@ -1,5 +1,5 @@
 // React Modules
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 
 // Route Logic
 import { useRoutes } from "react-router-dom";
@@ -14,7 +14,9 @@ function App() {
 
   return (
     <div className="App">
-      <main>{element}</main>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <main>{element}</main>
+      </Suspense>
     </div>
   );
 }
