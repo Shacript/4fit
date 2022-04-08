@@ -1,0 +1,51 @@
+@use "../base/varibles";
+
+.CreateTaskPage {
+  display: flex;
+  flex-wrap: wrap;
+
+  .container {
+    width: 100%;
+    margin-top: 1em;
+    display: flex;
+
+    column-gap: 3em;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+
+      row-gap: 1em;
+    }
+
+    .right {
+      flex: 1;
+
+      .activity-list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
+
+        .activity {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          background: #1e1e1e;
+
+          width: 675px;
+          height: 95px;
+          padding: 0 1.5em;
+
+          .activity-name {
+            font-size: varibles.$font-size-h5;
+          }
+
+          .time-count {
+            font-size: varibles.$font-size-h2;
+          }
+        }
+      }
+    }
+  }
+}
