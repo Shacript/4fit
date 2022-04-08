@@ -1,14 +1,3 @@
-import { GiWeight, GiHealthNormal, GiBodyHeight } from "react-icons/gi";
-import { MdAdd } from "react-icons/md";
-import {
-  FaRunning,
-  FaBicycle,
-  FaSwimmer,
-  FaHiking,
-  FaWalking,
-  FaQuestion,
-} from "react-icons/fa";
-
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import CardGroup from "../../components/CardGroup/CardGroup";
 const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
@@ -27,69 +16,59 @@ const renderLineChart = (
   </LineChart>
 );
 
-const icons = {
-  add: <MdAdd className="card-icon" />,
-  run: <FaRunning className="card-icon" />,
-  bicycleRide: <FaBicycle className="card-icon" />,
-  swim: <FaSwimmer className="card-icon" />,
-  walk: <FaWalking className="card-icon" />,
-  hike: <FaHiking className="card-icon" />,
-  other: <FaQuestion className="card-icon" />,
-};
-
 const DashboardPage = () => {
   const userHealthInfomation = [
     {
       topText: "55 kg.",
       bottomText: "Weight",
-      icon: <GiWeight className="card-icon" />,
+      icon: "weight",
     },
     {
       topText: "167 cm.",
       bottomText: "Height",
-      icon: <GiBodyHeight className="card-icon" />,
+      icon: "height",
     },
     {
       topText: "Good !",
       bottomText: "BMI 55",
-      icon: <GiHealthNormal className="card-icon" />,
+      icon: "bmi",
     },
   ];
 
   const userDailyTasks = [
     {
       topText: "Add Task",
-      icon: icons["add"],
+      icon: "add",
     },
     {
       topText: "Running Set",
       bottomText: "10 mins",
-      icon: icons["run"],
+      icon: "run",
     },
     {
       topText: "Bicycle Ride Set",
       bottomText: "10 mins",
-      icon: icons["bicycleRide"],
+      icon: "bicycleRide",
     },
     {
       topText: "Swimming Set",
       bottomText: "10 mins",
-      icon: icons["swim"],
+      icon: "swim",
     },
     {
       topText: "Walking Set",
       bottomText: "10 mins",
-      icon: icons["walk"],
+      icon: "walk",
     },
     {
       topText: "Hiking Set",
       bottomText: "10 mins",
-      icon: icons["hike"],
+      icon: "hike",
     },
     {
       topText: "Other Set",
       bottomText: "10 mins",
-      icon: icons["other"],
+      icon: "other",
     },
   ];
 
