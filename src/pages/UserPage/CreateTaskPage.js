@@ -1,6 +1,21 @@
+import { useState } from "react";
 import Card from "../../components/Card/Card";
+import DatePicker from "react-multi-date-picker";
+
+import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 
 const CreateTaskPage = () => {
+  const [activitys, setActivitys] = useState([
+    {
+      name: "Warm-up",
+      duration: 30,
+    },
+  ]);
+
+  const convertSecond = (seconds) => {
+    return new Date(seconds * 1000).toISOString().substring(11, 19);
+  };
+
   return (
     <div className="CreateTaskPage">
       <div className="header">
@@ -11,53 +26,37 @@ const CreateTaskPage = () => {
           <Card icon="run" topText="Running Set" bottomText="10 mins" />
           <input type="text" placeholder="Task name" />
           <textarea placeholder="Description" />
-          <input type="date" />
-          {/* <div className="info-box">
-            <FaRunning className="icon" />
-            <div className="info-content">
-              <p>Running Set</p>
-              <p>10 mins</p>
-            </div>
-            <FaEdit className="icon edit-button" />
-          </div>
-          <div className="description">
-            <h4>Description</h4>
-            <p>Desciption will show on here.</p>
-          </div>
-          <div className="task-control">
-            <button className="startAndPause-btn" onClick={triggerTimeCount}>
-              {!timeCountStatus ? "Start" : "Pause"}
-            </button>
-            <button
-              className="backward"
-              onClick={backwardActivity}
-              disabled={timeCountStatus}
-            >
-              {"<<"}
-            </button>
-            <button
-              className="forward"
-              onClick={forwardActivity}
-              disabled={timeCountStatus}
-            >
-              {">>"}
-            </button>
-          </div> */}
+          <DatePicker
+            multiple
+            inputClass="custom-date-input"
+            placeholder="Schedule date"
+          />
+          <select>
+            <option>run</option>
+            <option>bicycleRide</option>
+            <option>swim</option>
+            <option>walk</option>
+            <option>hike</option>
+            <option>other</option>
+          </select>
+          <button>Done</button>
         </div>
         <div className="right">
-          {/* <div className="activity-list">
+          <form>
+            <input type="text" placeholder="Activity Name" />
+            <input type="text" placeholder="Activity Time" />
+            <button type="submit">Add Activity</button>
+          </form>
+          <div className="activity-list">
             {activitys.map((activity, index) => (
-              <div
-                className={`activity ${
-                  index === currentActivity ? "active" : ""
-                }`}
-                key={index}
-              >
+              <div className="activity" key={index}>
                 <p className="activity-name">{activity.name}</p>
                 <p className="time-count">{convertSecond(activity.duration)}</p>
+                <FaEdit className="icon edit-button" />
+                <FaRegTrashAlt className="icon remove-button" />
               </div>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

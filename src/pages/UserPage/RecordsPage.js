@@ -1,5 +1,5 @@
 const RecordsPage = () => {
-  return <div>RecordsPage</div>;
+  return <div className="RecordsPage"></div>;
 };
 
 export default RecordsPage;
