@@ -1,4 +1,9 @@
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import TaskService from "../../services/task.service";
+
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+
 import CardGroup from "../../components/CardGroup/CardGroup";
 const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
 
@@ -17,72 +22,73 @@ const renderLineChart = (
 );
 
 const DashboardPage = () => {
-  const userHealthInfomation = [
+  const [userDailyTasks, setUserDailyTasks] = useState([]);
+
+  const currentDate = new Date();
+
+  const authSelector = useSelector((state) => state.auth);
+
+  let userHealthInfomation = [
     {
-      topText: "55 kg.",
+      topText: `${authSelector.user.weight} kg.`,
       bottomText: "Weight",
       icon: "weight",
     },
     {
-      topText: "167 cm.",
+      topText: `${authSelector.user.height} cm.`,
       bottomText: "Height",
       icon: "height",
     },
-    {
-      topText: "Good !",
-      bottomText: "BMI 55",
+  ];
+
+  const bmiCalculated = (
+    authSelector.user.weight /
+    (authSelector.user.height / 100) ** 2
+  ).toFixed(1);
+
+  if (bmiCalculated < 18.5) {
+    userHealthInfomation.push({
+      topText: "Underweight",
+      bottomText: `BMI ${bmiCalculated}`,
       icon: "bmi",
-    },
-  ];
+    });
+  } else if (bmiCalculated >= 18.5 && bmiCalculated <= 22.9) {
+    userHealthInfomation.push({
+      topText: "Normal",
+      bottomText: `BMI ${bmiCalculated}`,
+      icon: "bmi",
+    });
+  } else {
+    userHealthInfomation.push({
+      topText: "Overweight",
+      bottomText: `BMI ${bmiCalculated}`,
+      icon: "bmi",
+    });
+  }
 
-  const userDailyTasks = [
-    {
-      topText: "Add Task",
-      icon: "add",
-    },
-    {
-      topText: "Running Set",
-      bottomText: "10 mins",
-      icon: "run",
-    },
-    {
-      topText: "Bicycle Ride Set",
-      bottomText: "10 mins",
-      icon: "bicycleRide",
-    },
-    {
-      topText: "Swimming Set",
-      bottomText: "10 mins",
-      icon: "swim",
-    },
-    {
-      topText: "Walking Set",
-      bottomText: "10 mins",
-      icon: "walk",
-    },
-    {
-      topText: "Hiking Set",
-      bottomText: "10 mins",
-      icon: "hike",
-    },
-    {
-      topText: "Other Set",
-      bottomText: "10 mins",
-      icon: "other",
-    },
-  ];
-
-  const currentDate = new Date().toDateString();
+  useEffect(() => {
+    (async () => {
+      const response = await TaskService.getUserTasksByDate(
+        currentDate.toLocaleDateString()
+      );
+      setUserDailyTasks(
+        response.data.map((task) => ({
+          topText: task.name,
+          bottomText: "10 mins",
+          icon: task.type,
+        }))
+      );
+    })();
+  }, []);
 
   return (
     <div className="DashboardPage">
       <div className="header">
         <h3>Dashboard</h3>
-        <p className="header-date">{currentDate}</p>
+        <p className="header-date">{currentDate.toDateString()}</p>
         <div className="user-display">
           <div className="user-infomation">
-            <p>Aphisit Likitwattanapaisarn</p>
-            <p>Beginner</p>
+            <p>{`${authSelector.user.first_name} ${authSelector.user.last_name}`}</p>
           </div>
           <img src="./assets/images/profile.jpg" alt="profile" />
         </div>

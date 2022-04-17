@@ -3,9 +3,11 @@ import Card from "../Card/Card";
 const CardGroup = ({ data = [] }) => {
   return (
     <div className="CardGroup">
-      {data.map((v, i) => (
-        <Card key={i} {...v} />
-      ))}
+      {data.length > 0 ? (
+        data.map((v, i) => <Card key={i} {...v} />)
+      ) : (
+        <Card icon="regTimesCircle" topText="Oops, there's nothing here" />
+      )}
     </div>
   );
 };

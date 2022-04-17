@@ -7,6 +7,7 @@ import {
   FaHiking,
   FaWalking,
   FaQuestion,
+  FaRegTimesCircle,
 } from "react-icons/fa";
 
 const icons = {
@@ -20,6 +21,7 @@ const icons = {
   weight: <GiWeight className="card-icon" />,
   height: <GiBodyHeight className="card-icon" />,
   bmi: <GiHealthNormal className="card-icon" />,
+  regTimesCircle: <FaRegTimesCircle className="card-icon" />,
 };
 
 const Card = ({ topText, bottomText, icon }) => {

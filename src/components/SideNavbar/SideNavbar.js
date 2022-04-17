@@ -11,8 +11,13 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+
+import { logout } from "../../state/auth/authReducer";
+
 const SideNavbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const menu = [
     {
@@ -54,7 +59,7 @@ const SideNavbar = () => {
       icon: <MdLogout className="icon" />,
       label: "Sign out",
       onClick: () => {
-        // navigate("logout");
+        dispatch(logout()).then(() => navigate("/"));
       },
     },
   ];

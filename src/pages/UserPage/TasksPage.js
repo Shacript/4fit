@@ -1,42 +1,24 @@
+import { useState, useEffect } from "react";
+import TaskService from "../../services/task.service";
+
 import CardGroup from "../../components/CardGroup/CardGroup";
 
 const TasksPage = () => {
-  const userDailyTasks = [
-    {
-      topText: "Add Task",
-      icon: "add",
-    },
-    {
-      topText: "Running Set",
-      bottomText: "10 mins",
-      icon: "run",
-    },
-    {
-      topText: "Bicycle Ride Set",
-      bottomText: "10 mins",
-      icon: "bicycleRide",
-    },
-    {
-      topText: "Swimming Set",
-      bottomText: "10 mins",
-      icon: "swim",
-    },
-    {
-      topText: "Walking Set",
-      bottomText: "10 mins",
-      icon: "walk",
-    },
-    {
-      topText: "Hiking Set",
-      bottomText: "10 mins",
-      icon: "hike",
-    },
-    {
-      topText: "Other Set",
-      bottomText: "10 mins",
-      icon: "other",
-    },
-  ];
+  const [userDailyTasks, setUserDailyTasks] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await TaskService.getUserTasks();
+      setUserDailyTasks(
+        response.data.map((task) => ({
+          topText: task.name,
+          bottomText: "10 mins",
+          icon: task.type,
+        }))
+      );
+    })();
+  }, []);
+
   return (
     <div className="TasksPage">
       <div className="header">
