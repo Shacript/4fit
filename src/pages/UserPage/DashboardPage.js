@@ -5,7 +5,14 @@ import TaskService from "../../services/task.service";
 import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import CardGroup from "../../components/CardGroup/CardGroup";
-const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
+import WeightModal from "../../components/WeightModal/WeightModal";
+import HeightModal from "../../components/HeightModal/HeightModal";
+
+const data = [
+  { name: "2014", uv: 10 },
+  { name: "2015", uv: 15 },
+  { name: "2016", uv: 18.5 },
+];
 
 const renderLineChart = (
   <LineChart
@@ -28,23 +35,29 @@ const DashboardPage = () => {
 
   const authSelector = useSelector((state) => state.auth);
 
+  const userWeight = (authSelector.user && authSelector.user.weight) || 0;
+  const userHeight = (authSelector.user && authSelector.user.height) || 0;
+  const userFirstName =
+    (authSelector.user && authSelector.user.first_name) || "no_name";
+  const userLastName =
+    (authSelector.user && authSelector.user.last_name) || "no_name";
+
   let userHealthInfomation = [
     {
-      topText: `${authSelector.user.weight} kg.`,
+      topText: `${userWeight} kg.`,
       bottomText: "Weight",
       icon: "weight",
+      modal: <WeightModal defaultWeight={userWeight} />,
     },
     {
-      topText: `${authSelector.user.height} cm.`,
+      topText: `${userHeight} cm.`,
       bottomText: "Height",
       icon: "height",
+      modal: <HeightModal defaultHeight={userHeight} />,
     },
   ];
 
-  const bmiCalculated = (
-    authSelector.user.weight /
-    (authSelector.user.height / 100) ** 2
-  ).toFixed(1);
+  const bmiCalculated = (userWeight / (userHeight / 100) ** 2).toFixed(1);
 
   if (bmiCalculated < 18.5) {
     userHealthInfomation.push({
@@ -88,7 +101,7 @@ const DashboardPage = () => {
         <p className="header-date">{currentDate.toDateString()}</p>
         <div className="user-display">
           <div className="user-infomation">
-            <p>{`${authSelector.user.first_name} ${authSelector.user.last_name}`}</p>
+            <p>{`${userFirstName} ${userLastName}`}</p>
           </div>
           <img src="./assets/images/profile.jpg" alt="profile" />
         </div>

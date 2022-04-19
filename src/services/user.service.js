@@ -4,6 +4,10 @@ const getUserInformation = () => {
   return axiosInstance.get("user/me");
 };
 
-const userService = { getUserInformation };
+const updateUserInformation = (updatedBody) => {
+  return axiosInstance.put("user/me", updatedBody);
+};
+
+const userService = { getUserInformation, updateUserInformation };
 
 export default userService;

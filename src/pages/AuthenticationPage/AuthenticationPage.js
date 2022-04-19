@@ -5,16 +5,14 @@ import { useNavigate } from "react-router-dom";
 
 import Logo from "../../components/Logo/Logo";
 
-import { checkIfLogined } from "../../state/auth/authReducer";
+import { getUserInfomation } from "../../state/auth/authReducer";
 
 const AuthenticationPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const authSelector = useSelector((state) => state.auth);
-
   useEffect(() => {
-    dispatch(checkIfLogined()).then((res) => {
+    dispatch(getUserInfomation()).then((res) => {
       if (!res.error) navigate("/dashboard");
     });
   }, [dispatch, navigate]);

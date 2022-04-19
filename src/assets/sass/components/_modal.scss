@@ -1,0 +1,44 @@
+@use "../base/varibles";
+
+.Modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  backdrop-filter: blur(2px);
+
+  font-family: varibles.$font-family-primary;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .Modal-form {
+    background: #121212;
+    padding: 1em;
+
+    hr {
+      border-color: #3f3f3f7c;
+    }
+
+    .Modal-header {
+      p {
+        font-size: varibles.$font-size-h5;
+      }
+    }
+
+    .Modal-footer {
+      display: flex;
+      justify-content: flex-end;
+
+      column-gap: 1em;
+
+      button {
+        flex: 1;
+      }
+    }
+  }
+}

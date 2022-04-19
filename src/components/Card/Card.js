@@ -1,3 +1,4 @@
+import { useState, cloneElement } from "react";
 import { GiWeight, GiHealthNormal, GiBodyHeight } from "react-icons/gi";
 import { MdAdd } from "react-icons/md";
 import {
@@ -24,15 +25,27 @@ const icons = {
   regTimesCircle: <FaRegTimesCircle className="card-icon" />,
 };
 
-const Card = ({ topText, bottomText, icon }) => {
+const Card = ({ topText, bottomText, icon, onClick, modal }) => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const onClickHandler = () => {
+    if (modal) return setOpenModal(true);
+    if (onClick) return onClick();
+  };
+
   return (
-    <div className="Card">
-      {icons[icon]}
-      <div className="card-content">
-        {topText && <p>{topText}</p>}
-        {bottomText && <p>{bottomText}</p>}
+    <>
+      {modal &&
+        openModal &&
+        cloneElement(modal, { triggerClose: () => setOpenModal(false) })}
+      <div className="Card" onClick={onClickHandler}>
+        {icons[icon]}
+        <div className="card-content">
+          {topText && <p>{topText}</p>}
+          {bottomText && <p>{bottomText}</p>}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

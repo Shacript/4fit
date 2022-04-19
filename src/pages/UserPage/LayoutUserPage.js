@@ -4,15 +4,14 @@ import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SideNavbar from "../../components/SideNavbar/SideNavbar";
 
-import { checkIfLogined } from "../../state/auth/authReducer";
+import { getUserInfomation } from "../../state/auth/authReducer";
 
 const LayoutUserPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const authSelector = useSelector((state) => state.auth);
 
   useEffect(() => {
-    dispatch(checkIfLogined()).then((res) => {
+    dispatch(getUserInfomation()).then((res) => {
       if (res.error) navigate("/");
     });
   }, [dispatch, navigate]);

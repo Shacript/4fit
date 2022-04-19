@@ -4,8 +4,8 @@ import UserService from "../../services/user.service";
 
 import AuthService from "../../services/auth.service";
 
-export const checkIfLogined = createAsyncThunk(
-  "auth/checkIfLogined",
+export const getUserInfomation = createAsyncThunk(
+  "auth/getUserInfomation",
   async (thunkAPI) => {
     try {
       const response = await UserService.getUserInformation();
@@ -16,11 +16,28 @@ export const checkIfLogined = createAsyncThunk(
   }
 );
 
+export const updateUserInfomation = createAsyncThunk(
+  "auth/updateUserInfomation",
+  async (updatedForm, thunkAPI) => {
+    try {
+      const response = await UserService.updateUserInformation(updatedForm);
+      return { user: response.data };
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const login = createAsyncThunk(
   "auth/login",
   async ({ username, password }, thunkAPI) => {
     try {
-      console.log(username, password);
       await AuthService.login(username, password);
       const response = await UserService.getUserInformation();
       return { user: response.data };
@@ -49,11 +66,14 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   extraReducers: {
-    [checkIfLogined.fulfilled]: (state, action) => {
+    [updateUserInfomation.fulfilled]: (state, action) => {
+      state.user = action.payload.user;
+    },
+    [getUserInfomation.fulfilled]: (state, action) => {
       state.isLoggedIn = true;
       state.user = action.payload.user;
     },
-    [checkIfLogined.rejected]: (state, action) => {
+    [getUserInfomation.rejected]: (state, action) => {
       state.isLoggedIn = false;
       state.user = null;
     },
