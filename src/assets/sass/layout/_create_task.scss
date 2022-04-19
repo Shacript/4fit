@@ -17,6 +17,20 @@
 
       row-gap: 1em;
 
+      h6 {
+        font-size: varibles.$font-size-h6;
+        font-weight: 700;
+        padding-bottom: 0.5em;
+        border-bottom: 1px solid #fff;
+      }
+      span {
+        line-height: 1.3em;
+        font-size: varibles.$font-size-h6;
+        white-space: pre-line;
+        max-height: 150px;
+        overflow: auto;
+      }
+
       input,
       textarea {
         width: 310px;

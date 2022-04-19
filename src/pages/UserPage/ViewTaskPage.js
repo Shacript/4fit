@@ -1,14 +1,7 @@
 import { useState } from "react";
 
-import {
-  FaRunning,
-  FaBicycle,
-  FaSwimmer,
-  FaHiking,
-  FaWalking,
-  FaQuestion,
-  FaEdit,
-} from "react-icons/fa";
+import { FaRunning, FaEdit } from "react-icons/fa";
+import Card from "../../components/Card/Card";
 
 const activitys_init = [
   {
@@ -98,14 +91,12 @@ const ViewTaskPage = () => {
       </div>
       <div className="container">
         <div className="left">
-          <div className="info-box">
-            <FaRunning className="icon" />
-            <div className="info-content">
-              <p>Running Set</p>
-              <p>10 mins</p>
-            </div>
-            <FaEdit className="icon edit-button" />
-          </div>
+          <Card
+            icon="run"
+            topText="Running Set"
+            highlightTopText
+            bottomText="10 mins"
+          />
           <div className="description">
             <h4>Description</h4>
             <p>Desciption will show on here.</p>

@@ -27,6 +27,17 @@
     .Modal-header {
       p {
         font-size: varibles.$font-size-h5;
+        font-weight: 700;
+      }
+    }
+
+    .Modal-body {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5em;
+
+      p{
+        font-size: varibles.$font-size-h6;
       }
     }
 

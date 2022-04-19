@@ -3,6 +3,7 @@
 .Card {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   padding: 1.5em 1.2em;
   width: 300px;
@@ -17,9 +18,24 @@
   }
 
   .card-content {
-    margin: auto;
     display: flex;
     flex-direction: column;
     row-gap: 0.4em;
+
+    align-items: center;
+
+    padding: 0 1em;
+
+    flex: 1;
+
+    p {
+      font-size: varibles.$font-size-h6;
+      line-height: 1.2em;
+    }
+
+    .highlight {
+      font-size: varibles.$font-size-h5;
+      font-weight: 700;
+    }
   }
 }

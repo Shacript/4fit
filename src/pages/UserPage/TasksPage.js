@@ -12,8 +12,10 @@ const TasksPage = () => {
       setUserDailyTasks(
         response.data.map((task) => ({
           topText: task.name,
+          highlightTopText: true,
           bottomText: "10 mins",
           icon: task.type,
+          redirectTo: `/tasks/${task._id}`,
         }))
       );
     })();

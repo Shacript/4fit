@@ -7,6 +7,7 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import CardGroup from "../../components/CardGroup/CardGroup";
 import WeightModal from "../../components/WeightModal/WeightModal";
 import HeightModal from "../../components/HeightModal/HeightModal";
+import { current } from "@reduxjs/toolkit";
 
 const data = [
   { name: "2014", uv: 10 },
@@ -45,12 +46,14 @@ const DashboardPage = () => {
   let userHealthInfomation = [
     {
       topText: `${userWeight} kg.`,
+      highlightTopText: true,
       bottomText: "Weight",
       icon: "weight",
       modal: <WeightModal defaultWeight={userWeight} />,
     },
     {
       topText: `${userHeight} cm.`,
+      highlightTopText: true,
       bottomText: "Height",
       icon: "height",
       modal: <HeightModal defaultHeight={userHeight} />,
@@ -62,18 +65,21 @@ const DashboardPage = () => {
   if (bmiCalculated < 18.5) {
     userHealthInfomation.push({
       topText: "Underweight",
+      highlightTopText: true,
       bottomText: `BMI ${bmiCalculated}`,
       icon: "bmi",
     });
   } else if (bmiCalculated >= 18.5 && bmiCalculated <= 22.9) {
     userHealthInfomation.push({
       topText: "Normal",
+      highlightTopText: true,
       bottomText: `BMI ${bmiCalculated}`,
       icon: "bmi",
     });
   } else {
     userHealthInfomation.push({
       topText: "Overweight",
+      highlightTopText: true,
       bottomText: `BMI ${bmiCalculated}`,
       icon: "bmi",
     });
@@ -87,8 +93,10 @@ const DashboardPage = () => {
       setUserDailyTasks(
         response.data.map((task) => ({
           topText: task.name,
+          highlightTopText: true,
           bottomText: "10 mins",
           icon: task.type,
+          redirectTo: `/tasks/${task._id}`,
         }))
       );
     })();
@@ -112,7 +120,10 @@ const DashboardPage = () => {
       </div>
       <div className="Infomation">
         <h4>Daily Tasks</h4>
-        <CardGroup data={userDailyTasks} />
+        <CardGroup
+          data={userDailyTasks}
+          noResultText="Look like you don't have any tasks today !"
+        />
       </div>
       <div className="Chart">
         <h4>Record Chart</h4>

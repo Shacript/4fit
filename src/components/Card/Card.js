@@ -1,4 +1,7 @@
 import { useState, cloneElement } from "react";
+
+import { useNavigate } from "react-router-dom";
+
 import { GiWeight, GiHealthNormal, GiBodyHeight } from "react-icons/gi";
 import { MdAdd } from "react-icons/md";
 import {
@@ -25,12 +28,21 @@ const icons = {
   regTimesCircle: <FaRegTimesCircle className="card-icon" />,
 };
 
-const Card = ({ topText, bottomText, icon, onClick, modal }) => {
+const Card = ({
+  topText,
+  bottomText,
+  icon,
+  highlightTopText,
+  redirectTo,
+  modal,
+}) => {
   const [openModal, setOpenModal] = useState(false);
+
+  const navigate = useNavigate();
 
   const onClickHandler = () => {
     if (modal) return setOpenModal(true);
-    if (onClick) return onClick();
+    if (redirectTo) return navigate(redirectTo);
   };
 
   return (
@@ -41,7 +53,9 @@ const Card = ({ topText, bottomText, icon, onClick, modal }) => {
       <div className="Card" onClick={onClickHandler}>
         {icons[icon]}
         <div className="card-content">
-          {topText && <p>{topText}</p>}
+          {topText && (
+            <p className={highlightTopText ? "highlight" : ""}>{topText}</p>
+          )}
           {bottomText && <p>{bottomText}</p>}
         </div>
       </div>
