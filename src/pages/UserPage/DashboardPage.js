@@ -7,7 +7,6 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
 import CardGroup from "../../components/CardGroup/CardGroup";
 import WeightModal from "../../components/WeightModal/WeightModal";
 import HeightModal from "../../components/HeightModal/HeightModal";
-import { current } from "@reduxjs/toolkit";
 
 const data = [
   { name: "2014", uv: 10 },
