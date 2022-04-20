@@ -5,7 +5,6 @@ import {
   MdListAlt,
   MdAdd,
   MdHistory,
-  MdSettings,
   MdLogout,
 } from "react-icons/md";
 
@@ -46,13 +45,6 @@ const SideNavbar = () => {
       label: "Records",
       onClick: () => {
         navigate("records");
-      },
-    },
-    {
-      icon: <MdSettings className="icon" />,
-      label: "Settings",
-      onClick: () => {
-        navigate("settings");
       },
     },
     {

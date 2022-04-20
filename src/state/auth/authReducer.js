@@ -34,6 +34,30 @@ export const updateUserInfomation = createAsyncThunk(
   }
 );
 
+export const register = createAsyncThunk(
+  "auth/register",
+  async ({ username, email, password, first_name, last_name }, thunkAPI) => {
+    try {
+      await AuthService.register({
+        username,
+        email,
+        password,
+        first_name,
+        last_name,
+      });
+      return true;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const login = createAsyncThunk(
   "auth/login",
   async ({ username, password }, thunkAPI) => {

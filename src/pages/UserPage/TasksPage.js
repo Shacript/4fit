@@ -13,7 +13,7 @@ const TasksPage = () => {
         response.data.map((task) => ({
           topText: task.name,
           highlightTopText: true,
-          bottomText: "10 mins",
+          bottomText: `${Math.floor(task.calculateAllSeconds / 60)} mins`,
           icon: task.type,
           redirectTo: `/tasks/${task._id}`,
         }))

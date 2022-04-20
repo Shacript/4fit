@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "../../components/Card/Card";
 import DatePicker from "react-multi-date-picker";
 
@@ -7,9 +7,9 @@ import EditActivityModal from "../../components/EditActivityModal/EditActivityMo
 
 import TaskService from "../../services/task.service";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const CreateTaskPage = () => {
+const EditTaskPage = () => {
   const [activitys, setActivitys] = useState([]);
 
   const [activityName, setActivityName] = useState("");
@@ -24,6 +24,18 @@ const CreateTaskPage = () => {
   const [openEditActivityModal, setOpenEditActivityModal] = useState(false);
 
   const navigate = useNavigate();
+
+  const params = useParams();
+
+  useEffect(() => {
+    TaskService.getUserTask(params._id).then(({ data }) => {
+      setActivitys(data.activities);
+      setType(data.type);
+      setName(data.name);
+      setDescription(data.description);
+      setSchedule(data.schedule);
+    });
+  }, [params]);
 
   const convertSecond = (seconds) => {
     return new Date(seconds * 1000).toISOString().substring(11, 19);
@@ -59,17 +71,31 @@ const CreateTaskPage = () => {
     e.preventDefault();
     if (activitys.length <= 0) return;
 
-    const formatedSchedule = schedule.map((date) => date.format("M/D/YYYY"));
+    const formatedSchedule = schedule.map((date) => {
+      if (date.format) {
+        return date.format("M/D/YYYY");
+      }
+      return date;
+    });
 
     try {
-      const res = await TaskService.addUserTask({
+      await TaskService.updateUserTask(params._id, {
         name,
         type,
         schedule: formatedSchedule,
         activities: activitys,
-        description: description !== "" ? description : undefined,
+        description: description,
       });
-      navigate(`/tasks/${res.data._id}`);
+      navigate(`/tasks/${params._id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onRemoveHandler = async () => {
+    try {
+      await TaskService.removeUserTask(params._id);
+      navigate(`/tasks`);
     } catch (err) {
       console.log(err);
     }
@@ -95,7 +121,7 @@ const CreateTaskPage = () => {
         />
       )}
       <div className="header">
-        <h3>Create Task</h3>
+        <h3>Edit Task</h3>
       </div>
       <div className="container">
         <form className="left" onSubmit={onSubmitAddTask}>
@@ -136,7 +162,10 @@ const CreateTaskPage = () => {
             onChange={(value) => setSchedule(value)}
             required
           />
-          <button type="submit">Done</button>
+          <button type="button" onClick={onRemoveHandler}>
+            Remove Task
+          </button>
+          <button type="submit">Update</button>
         </form>
         <div className="right">
           <form onSubmit={onSubmitAddActivityHandler}>
@@ -194,4 +223,4 @@ const CreateTaskPage = () => {
   );
 };
 
-export default CreateTaskPage;
+export default EditTaskPage;

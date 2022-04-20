@@ -35,4 +35,18 @@
       }
     }
   }
+
+  .Chart {
+    .chart-header {
+      padding-top: 2em;
+      display: flex;
+      align-items: center;
+      column-gap: 1em;
+      row-gap: 1em;
+
+      select {
+        width: 150px;
+      }
+    }
+  }
 }

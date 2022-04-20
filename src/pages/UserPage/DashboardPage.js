@@ -2,34 +2,24 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import TaskService from "../../services/task.service";
 
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import RecordService from "../../services/record.service";
+
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
 
 import CardGroup from "../../components/CardGroup/CardGroup";
 import WeightModal from "../../components/WeightModal/WeightModal";
 import HeightModal from "../../components/HeightModal/HeightModal";
 
-const data = [
-  { name: "2014", uv: 10 },
-  { name: "2015", uv: 15 },
-  { name: "2016", uv: 18.5 },
-];
-
-const renderLineChart = (
-  <LineChart
-    width={1024}
-    height={300}
-    data={data}
-    margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-  >
-    <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-    <XAxis dataKey="name" />
-    <YAxis />
-  </LineChart>
-);
-
 const DashboardPage = () => {
   const [userDailyTasks, setUserDailyTasks] = useState([]);
+  const [data, setData] = useState([]);
 
   const currentDate = new Date();
 
@@ -87,7 +77,7 @@ const DashboardPage = () => {
   useEffect(() => {
     (async () => {
       const response = await TaskService.getUserTasksByDate(
-        currentDate.toLocaleDateString()
+        new Date().toLocaleDateString()
       );
       setUserDailyTasks(
         response.data.map((task) => ({
@@ -98,6 +88,9 @@ const DashboardPage = () => {
           redirectTo: `/tasks/${task._id}`,
         }))
       );
+
+      const { data } = await RecordService.getUserRecordsChart("task_record");
+      setData(data);
     })();
   }, []);
 
@@ -106,13 +99,8 @@ const DashboardPage = () => {
       <div className="header">
         <h3>Dashboard</h3>
         <p className="header-date">{currentDate.toDateString()}</p>
-        <div className="user-display">
-          <div className="user-infomation">
-            <p>{`${userFirstName} ${userLastName}`}</p>
-          </div>
-          <img src="./assets/images/profile.jpg" alt="profile" />
-        </div>
       </div>
+      <p>Logged in as ({`${userFirstName} ${userLastName}`}).</p>
       <div className="Infomation">
         <h4>Infomation</h4>
         <CardGroup data={userHealthInfomation} />
@@ -125,8 +113,21 @@ const DashboardPage = () => {
         />
       </div>
       <div className="Chart">
-        <h4>Record Chart</h4>
-        {renderLineChart}
+        <div className="chart-header">
+          <h4>All Task Record Chart</h4>
+        </div>
+        <LineChart
+          width={1050}
+          height={400}
+          data={data}
+          margin={{ top: 20, right: 20, bottom: 5, left: 0 }}
+        >
+          <Line type="monotone" dataKey="seconds" stroke="#8884d8" />
+          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+          <XAxis dataKey="_id" />
+          <YAxis />
+          <Tooltip />
+        </LineChart>
       </div>
     </div>
   );

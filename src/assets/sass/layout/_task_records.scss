@@ -1,0 +1,72 @@
+@use "../base/varibles";
+
+.TaskRecords {
+  .underline {
+    border-bottom: 1px solid #1e1e1e;
+    padding-bottom: 1em;
+  }
+
+  .table {
+    display: flex;
+    row-gap: 1em;
+    flex-direction: column;
+
+    width: 1200px;
+
+    .row {
+      display: flex;
+      column-gap: 1em;
+      flex-wrap: wrap;
+
+      .column-detail {
+        width: 300px;
+        h5 {
+          font-size: varibles.$font-size-h4;
+          font-weight: 700;
+          margin-bottom: 1em;
+        }
+        span {
+          white-space: pre-line;
+        }
+      }
+
+      .big-activity {
+        display: flex;
+        column-gap: 1em;
+        row-gap: 1em;
+        flex: 1;
+        flex-wrap: wrap;
+      }
+
+      .activity {
+        display: flex;
+        column-gap: 1em;
+        width: 100%;
+      }
+
+      .column-left {
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
+        flex: 1;
+        height: 55px;
+        background: #1e1e1e;
+        justify-content: space-between;
+      }
+
+      .column-right {
+        display: flex;
+        align-items: center;
+        padding: 0 1em;
+        width: 250px;
+        height: 55px;
+        background: #1e1e1e;
+      }
+
+      .column-header {
+        padding: 0 1em;
+        height: 25px;
+      }
+    }
+  }
+}

@@ -21,6 +21,7 @@ const ViewTaskPage = React.lazy(() => import("../pages/UserPage/ViewTaskPage"));
 const CreateTaskPage = React.lazy(() =>
   import("../pages/UserPage/CreateTaskPage")
 );
+const EditTaskPage = React.lazy(() => import("../pages/UserPage/EditTaskPage"));
 
 const RecordsPage = React.lazy(() => import("../pages/UserPage/RecordsPage"));
 const TaskRecords = React.lazy(() =>
@@ -29,8 +30,6 @@ const TaskRecords = React.lazy(() =>
 const WeightRecords = React.lazy(() =>
   import("../pages/UserPage/SubRecordsPage/WeightRecords")
 );
-
-const SettingsPage = React.lazy(() => import("../pages/UserPage/SettingsPage"));
 
 const routes = [
   {
@@ -60,8 +59,12 @@ const routes = [
         element: <TasksPage />,
       },
       {
-        path: "/tasks/:id",
+        path: "/tasks/:_id",
         element: <ViewTaskPage />,
+      },
+      {
+        path: "/tasks/edit/:_id",
+        element: <EditTaskPage />,
       },
       {
         path: "/create_task",
@@ -80,10 +83,6 @@ const routes = [
             element: <WeightRecords />,
           },
         ],
-      },
-      {
-        path: "/settings",
-        element: <SettingsPage />,
       },
     ],
   },

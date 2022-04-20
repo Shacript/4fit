@@ -1,0 +1,14 @@
+@use "../base/varibles";
+
+.RecordsPage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+
+  .nav-header {
+    display: flex;
+    column-gap: 1em;
+
+    font-size: varibles.$font-size-h5;
+  }
+}

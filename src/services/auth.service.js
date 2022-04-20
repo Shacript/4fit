@@ -1,24 +1,12 @@
 import axiosInstance from "../configs/axios";
 
-const register = ({
-  username,
-  email,
-  password,
-  first_name,
-  last_name,
-  date_of_birth,
-  weight,
-  height,
-}) => {
+const register = ({ username, email, password, first_name, last_name }) => {
   return axiosInstance.post("register", {
     username,
     email,
     password,
     first_name,
     last_name,
-    date_of_birth,
-    weight,
-    height,
   });
 };
 

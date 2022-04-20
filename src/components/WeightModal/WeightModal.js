@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { updateUserInfomation } from "../../state/auth/authReducer";
 import { useState } from "react";
 
+import RecordService from "../../services/record.service";
+
 const WeightModal = ({ defaultWeight = 0, triggerClose }) => {
   const [weight, setWeight] = useState(defaultWeight);
 
@@ -14,7 +16,18 @@ const WeightModal = ({ defaultWeight = 0, triggerClose }) => {
     e.preventDefault();
 
     dispatch(updateUserInfomation({ weight })).then((res) => {
-      if (!res.error) triggerClose();
+      if (!res.error) {
+        RecordService.addUserRecord({
+          date: new Date().toLocaleDateString(),
+          timestamp: new Date().toISOString(),
+          name: "อัพเดทน้ำหนัก",
+          record_type: "weight_record",
+          note: `${weight} kg.`,
+          type: "hike",
+        }).then(() => {
+          triggerClose();
+        });
+      }
     });
   };
 
